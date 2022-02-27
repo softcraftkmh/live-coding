@@ -120,7 +120,7 @@ export const CardImage = styled.img`
 export const Submit = styled.button`
     ${resetButton()}
 
-    background: var(--dorminant_1);
+    background: var(--dominant_1);
     box-shadow: var(--product_shadow);
     border-radius: 4px;
     padding: 12px 28px;

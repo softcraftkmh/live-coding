@@ -25,7 +25,7 @@ export const ProductHead = styled.header`
     height: 60px;
     border-radius: 10px;
     background-color: #fcfcfc;
-    border: 4px solid var(--dorminant_1);
+    border: 4px solid var(--dominant_1);
     box-shadow: var(--product_shadow);
 
     margin: 0 auto;
@@ -43,7 +43,7 @@ export const ProductName = styled.div`
 export const ProductPrice = styled.div`
     font-size: 0.6875em;
     font-weight: 500;
-    color: var(--dorminant_1);
+    color: var(--dominant_1);
 
     margin-bottom: 8px;
 `
@@ -85,7 +85,7 @@ export const ProductQuantityButton = styled.button`
         height: auto;
 
         path {
-            fill: var(--dorminant_1);
+            fill: var(--dominant_1);
             ${normalTransitions()}
         }
     }
@@ -97,7 +97,7 @@ export const ProductQuantityButton = styled.button`
     }
 
     &:hover:not(:disabled) {
-        border-color: var(--dorminant_1);
+        border-color: var(--dominant_1);
     }
 `
 
@@ -162,7 +162,7 @@ export const ProductCartButton = styled.button`
 
     padding: 7px;
 
-    background-color: var(--dorminant_1);
+    background-color: var(--dominant_1);
     box-shadow: var(--cart_shadow);
 
     svg {
@@ -187,7 +187,7 @@ export const ProductCartButton = styled.button`
         background-color: #fff;
 
         svg path {
-            fill: var(--dorminant_1);
+            fill: var(--dominant_1);
         }
     }
 `

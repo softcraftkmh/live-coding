@@ -28,7 +28,7 @@ export const ProductHead = styled.header`
     height: 36px;
     border-radius: 5px;
     background-color: #fcfcfc;
-    border: 3px solid var(--dorminant_1);
+    border: 3px solid var(--dominant_1);
 
     margin: 0 auto;
     margin-bottom: 4px;
@@ -50,7 +50,7 @@ export const ProductLabel = styled.h3`
 export const ProductPrice = styled.div`
     font-size: 0.6875em;
     font-weight: 500;
-    color: var(--dorminant_1);
+    color: var(--dominant_1);
 `
 
 export const ProductTotalPrice = styled.div`
@@ -58,7 +58,7 @@ export const ProductTotalPrice = styled.div`
 
     font-size: 0.875em;
     font-weight: 700;
-    color: var(--dorminant_1);
+    color: var(--dominant_1);
 `
 
 export const ProductQuantity = styled.div`
