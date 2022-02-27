@@ -12,6 +12,7 @@ import {
     parseCardType,
     validateCardExpiry,
     parseCardExpiry,
+    validateCardCVC,
 } from "creditcardutils"
 import Joi from "joi"
 
@@ -119,11 +120,23 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                     "string.cardExpire": "Must be valid expiration date",
                     "any.required": "Required",
                 }),
-            cvv: Joi.string().length(3).required().messages({
-                "string.empty": "Required",
-                "string.length": "Maximum 3 digits",
-                "any.required": "Required",
-            }),
+            cvv: Joi.string()
+                .length(3)
+                .required()
+                .custom((value, helpers) => {
+                    if (value) {
+                        if (!validateCardCVC(value)) {
+                            return helpers.error("string.invalid")
+                        }
+                    }
+                    return value
+                })
+                .messages({
+                    "string.empty": "Required",
+                    "string.invalid": "Must be valid CVV",
+                    "string.length": "Maximum 3 digits",
+                    "any.required": "Required",
+                }),
         }),
     })
 
@@ -227,8 +240,9 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                         <Fields>
                             <Input
                                 {...register.input({ name: "cvv" })}
-                                type="text"
+                                type="number"
                                 placeholder="123"
+                                maxLength={3}
                             />
 
                             {getErrors("cvv") && (
