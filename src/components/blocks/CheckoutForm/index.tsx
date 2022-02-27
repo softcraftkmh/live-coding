@@ -88,13 +88,13 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                 })
                 .custom((value, helpers) => {
                     if (value) {
+                        const cardType = parseCardType(value)
                         if (
-                            parseCardType(value) === "visa" ||
-                            parseCardType(value) === "mastercard"
+                            !(cardType === "visa" || cardType === "mastercard")
                         ) {
-                            return value
+                            return helpers.error("string.cardType")
                         }
-                        return helpers.error("string.cardType")
+                        return value
                     }
                 })
                 .required()
