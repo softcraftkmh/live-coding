@@ -8,20 +8,26 @@ import React, {
 import {
     formatCardExpiry,
     formatCardNumber,
-    validateCardNumber,
-    parseCardType,
-    validateCardExpiry,
     parseCardExpiry,
+    parseCardType,
     validateCardCVC,
+    validateCardExpiry,
+    validateCardNumber,
 } from "creditcardutils"
 import Joi from "joi"
 
 import useValidator from "@packages/react-joi"
 import useModels from "@packages/react-use-models"
 
+// Svg Icons
+import IconVisa from "@components/svgs/visa.svg"
+import IconMastercard from "@components/svgs/mastercard.svg"
+
 // Styled Elements
 import {
     Actions,
+    CardImage,
+    CardImageGroup,
     Container,
     ErrorMessage,
     FieldControl,
@@ -210,6 +216,22 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                                 type="text"
                                 placeholder="1234 1234 1234 1234"
                             />
+                            <CardImageGroup>
+                                <CardImage
+                                    src={IconVisa}
+                                    active={
+                                        parseCardType(models.card_number) ===
+                                        "visa"
+                                    }
+                                />
+                                <CardImage
+                                    src={IconMastercard}
+                                    active={
+                                        parseCardType(models.card_number) ===
+                                        "mastercard"
+                                    }
+                                />
+                            </CardImageGroup>
                         </FieldControl>
 
                         {getErrors("card_number") && (

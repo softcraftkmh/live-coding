@@ -43,6 +43,7 @@ export const FieldsMerge = styled.section`
 
 export const FieldControl = styled.label`
     display: block;
+    position: relative;
 `
 
 type FieldLabelProps = {
@@ -98,3 +99,20 @@ export const Actions = styled.article`
 `
 
 export const Fields = styled.article.attrs(() => ({ className: "fields" }))``
+
+export const CardImageGroup = styled.div`
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    display: flex;
+    gap: 8px;
+`
+
+type CardImageProps = {
+    active: boolean
+}
+export const CardImage = styled.img`
+    width: 24px;
+    height: 16px;
+    opacity: ${(props: CardImageProps) => (props.active ? 1 : 0.3)};
+`
