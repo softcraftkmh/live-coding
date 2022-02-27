@@ -10,6 +10,8 @@ import {
     formatCardNumber,
     validateCardNumber,
     parseCardType,
+    validateCardExpiry,
+    parseCardExpiry,
 } from "creditcardutils"
 import Joi from "joi"
 
@@ -101,10 +103,22 @@ const CheckoutForm: FC<CheckoutFormProps> = ({
                     "string.cardType": "Must be Visa / Master card type",
                     "any.required": "Required",
                 }),
-            card_expire: Joi.string().required().messages({
-                "string.empty": "Required",
-                "any.required": "Required",
-            }),
+            card_expire: Joi.string()
+                .custom((value, helpers) => {
+                    if (value) {
+                        const { month, year } = parseCardExpiry(value)
+                        if (!validateCardExpiry(month, year)) {
+                            return helpers.error("string.cardExpire")
+                        }
+                    }
+                    return value
+                })
+                .required()
+                .messages({
+                    "string.empty": "Required",
+                    "string.cardExpire": "Must be valid expiration date",
+                    "any.required": "Required",
+                }),
             cvv: Joi.string().length(3).required().messages({
                 "string.empty": "Required",
                 "string.length": "Maximum 3 digits",
